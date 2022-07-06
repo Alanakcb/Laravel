@@ -78,7 +78,7 @@ class TopicoController extends Controller
      */
     public function update(Request $request, Topico $topico)
     {
-        $validated = request->validate([
+        $validated = $request->validate([
             'topico' => 'required|max:255',
         ]);
         if($validated) {

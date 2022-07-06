@@ -10,7 +10,7 @@
 @endif
 <form method="POST" action="{{url('topico',$topico->id)}}">
     @csrf
-    @method('POST')
+    @method('PUT')
     <div>
         <label for="topico">Tópico</label>
         <input type="text" name="topico" id="topico" value="{{$topico->topico}}" required/>

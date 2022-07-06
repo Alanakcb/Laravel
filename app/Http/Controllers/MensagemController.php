@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mensagem;
 use App\Models\Topico;
 use Illuminate\Http\Request;
-use Illuminate\Support\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class MensagemController extends Controller
 {
@@ -47,7 +47,7 @@ class MensagemController extends Controller
         if ($validated){
             $mensagem = new Mensagem();
             $mensagem->user_id = Auth::user()->id;
-            $mensagem->titulo = request->get('titulo');
+            $mensagem->titulo = $request->get('titulo');
             $mensagem->mensagem = $request->get('mensagem');
             $mensagem->save();
             $mensagem->topicos()->attach($request->get('topico'));

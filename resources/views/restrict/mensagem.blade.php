@@ -11,6 +11,7 @@
             <th>Título</th>
             <th>Mensagem</th>
             <th>Tópicos</th>
+            <th>Mensagem</th>
             <th>Editar</th>
             <th>Remover</th>
         </tr>
@@ -27,6 +28,9 @@
                 <div>{{$topico->topico}}</div>
                 @endforeach
                 @endif
+            </td>
+            <td>
+                <img src="{{Storage::url($mensagem->imagem)}}" alt="{{$mensagem->titulo}}" class="showImg" />
             </td>
             <td>
                 <form method="POST" action="{{route('mensagem.destroy',$mensagem->id)}}" onsubmit="return confirm('tem certeza?');">

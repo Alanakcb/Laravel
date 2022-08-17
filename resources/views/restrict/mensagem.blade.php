@@ -11,7 +11,7 @@
             <th>Título</th>
             <th>Mensagem</th>
             <th>Tópicos</th>
-            <th>Mensagem</th>
+            <th>Imagem</th>
             <th>Editar</th>
             <th>Remover</th>
         </tr>
@@ -30,7 +30,12 @@
                 @endif
             </td>
             <td>
-                <img src="{{Storage::url($mensagem->imagem)}}" alt="{{$mensagem->titulo}}" class="showImg" />
+                <img src="{{($mensagem->imagem)}}" alt="{{$mensagem->titulo}}" class="showImg" />
+            </td>
+            <td>
+                <a href="{{route('mensagem.edit', $mensagem->id)}}" class="button">
+                    Editar
+                </a>
             </td>
             <td>
                 <form method="POST" action="{{route('mensagem.destroy',$mensagem->id)}}" onsubmit="return confirm('tem certeza?');">

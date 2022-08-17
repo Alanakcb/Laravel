@@ -51,9 +51,12 @@ class MensagemController extends Controller
             $mensagem->user_id = Auth::user()->id;
             $mensagem->titulo = $request->get('titulo');
             $mensagem->mensagem = $request->get('mensagem');
-            $name = $request->file('imagem')->getClientOriginalName();
-            $patch = $request->file('imagem')->storeAs("public/img",$name);
-            $mensagem->imagem = $patch;
+            //$name = $request->file('imagem')->getClientOriginalName();
+            //$patch = $request->file('imagem')->storeAs("public/img",$name);
+            $name = $request->file('imagem')->store('','s3');
+            Storage::disk('s3')->setVisibility($name, 'public');
+            $path = Storage::disk('s3')->url($name);
+            $mensagem->imagem = $path;
             $mensagem->save();
             $mensagem->topicos()->attach($request->get('topico'));
             return redirect('mensagem');
@@ -101,9 +104,12 @@ class MensagemController extends Controller
         if ($validated){
             $mensagem->titulo = $request->get('titulo');
             $mensagem->mensagem = $request->get('mensagem');
-            $name = $request->file('imagem')->getClientOriginalName();
-            $patch = $request->file('imagem')->storeAs("public/img",$name);
-            $mensagem->imagem = $patch;
+            //$name = $request->file('imagem')->getClientOriginalName();
+            //$patch = $request->file('imagem')->storeAs("public/img",$name);
+            $name = $request->file('imagem')->store('','s3');
+            Storage::disk('s3')->setVisibility($name, 'public');
+            $path = Storage::disk('s3')->url($name);
+            $mensagem->imagem = $path;
             $mensagem->save();
             $mensagem->topicos()->sync($request->get('topico'));
             return redirect('mensagem');

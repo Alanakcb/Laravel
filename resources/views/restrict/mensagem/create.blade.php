@@ -16,7 +16,7 @@
         <input type="text" name="titulo" id="titulo" value="{{ old('titulo') }}" required />
     </div>
     <div>
-        <label for="msg">Menssagem</label>
+        <label for="msg">Mensagem</label>
         <textarea name="mensagem" id="msg" required>{{ old('mensagem') }} </textarea>
     </div>
     <div>

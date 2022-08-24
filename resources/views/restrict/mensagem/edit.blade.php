@@ -8,9 +8,9 @@
     @endforeach
 </ul>
 @endif
-<form method="POST" action="{{url('mensagem', $mensagem->id)}}">
+<form method="POST" action="{{url('mensagem', $mensagem->id)}}" enctype="multipart/form-data">
     @csrf
-    @method('POST')
+    @method('PUT')
     <div>
         <label for="titulo">Título</label>
         <input type="text" name="titulo" id="titulo" value="{{$mensagem->titulo}}" required />

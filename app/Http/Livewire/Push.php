@@ -12,7 +12,7 @@ class Push extends Component
 
     public $body = "";
     public $editId = 0;
-    public $titlt = "";
+    public $title = "";
 
     protected $rules = [
         'title' => 'required|min:5|max:255',
@@ -28,7 +28,7 @@ class Push extends Component
 
     public function store()
     {
-        $this->valitade();
+        $this->validate();
 
         if($this->editId == 0){
             $aviso = new Aviso();

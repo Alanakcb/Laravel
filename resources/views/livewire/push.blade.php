@@ -3,6 +3,7 @@
         <p>{{$title}}</p>
         <p>{{$body}}</p>
         <div class="bg-red-400">
+            @error('title') <p>{{$message}}</p> @enderror
             @error('body') <p>{{$message}}</p> @enderror
         </div>
         <input type="hidden" name="editId" wire:model="editId" />
